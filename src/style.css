@@ -12,6 +12,10 @@
         font-size: 62.5%;
         background-color: aliceblue;
     }
+
+    header, main {
+        @apply w-full p-12 grid place-items-center;
+    }
 }
 
 @layer components {
@@ -34,5 +38,46 @@
 
     .inp-container input:focus ~ label, .inp-container input:not(:placeholder-shown) ~ label {
         @apply translate-y-[-180%] bg-[#f0f8ff] text-[1.5rem] font-semibold;
+    }
+
+    .product-container {
+        @apply w-full flex flex-col items-center gap-8;
+    }
+
+    .product-card {
+        @apply w-[60rem] min-h-[15rem] flex bg-white rounded-lg;
+        box-shadow: 0px 0.7rem 3.2rem rgba(0, 0, 0, 0.25);
+    }
+    
+    .product-card .img {
+        @apply flex-[1] border-r-[1px] border-black;
+    }
+
+    .product-card .info {
+        @apply flex-[5] flex flex-col gap-2;
+    }
+
+    .product-card .img, .product-card .info {
+        @apply card-sizing-padding;
+    }
+
+    .product-card .info h1 {
+        @apply text-3xl font-semibold;
+    }
+
+    .product-card .info p {
+        @apply text-xl text-[#000000c0] font-semibold;
+    }
+
+    .product-card .info button {
+        @apply text-3xl text-white py-2 px-6 bg-rose-400 rounded-md transition-all duration-200 hover:scale-110
+        hover:shadow-[0px_0.25rem_1.5rem_rgba(0,0,0,0.5)];
+    }
+
+}
+
+@layer utilities {
+    .card-sizing-padding {
+        @apply px-12 py-8 w-full min-h-full;
     }
 }
