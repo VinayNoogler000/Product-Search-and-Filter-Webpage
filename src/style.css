@@ -5,16 +5,34 @@
 @layer base {
     * {
         @apply p-0 m-0 border-0 box-border font-sans;
-        font-family: Arial, sans-serif;
+        font-family: "Poppins", sans-serif;
     }
 
     html {
         font-size: 62.5%;
+        background-color: aliceblue;
     }
 }
 
 @layer components {
     .inp-container {
-        @apply border-2 border-[#f56a47] rounded-lg px-8 py-4 flex justify-center items-center relative ;
+        @apply w-8/12 border-2 border-[#f56a47] rounded-xl flex justify-center items-center relative;
+    }
+
+    .inp-container svg {
+        @apply w-[3rem] left-[1rem];
+    }
+
+    .inp-container input {
+        @apply focus:outline-[#f56a47] text-[1.85rem] text-[#f56a47];
+    }
+
+    .inp-container label {
+        @apply text-[2rem] text-[#f56a47] left-[5rem] transition-all duration-200 bg-[#f0f8ff00] p-0 leading-[0.8];
+        cursor: text;
+    }
+
+    .inp-container input:focus ~ label, .inp-container input:not(:placeholder-shown) ~ label {
+        @apply translate-y-[-180%] bg-[#f0f8ff] text-[1.5rem] font-semibold;
     }
 }
