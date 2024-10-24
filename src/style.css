@@ -4,7 +4,7 @@
 
 @layer base {
     * {
-        @apply p-0 m-0 border-0 box-border font-sans;
+        @apply p-0 m-0 border-0 box-border;
         font-family: "Poppins", sans-serif;
     }
 
@@ -19,6 +19,7 @@
 }
 
 @layer components {
+    /* -------------------INPUT CONTAINER AND INPUT ELEMENT STYLING------------------- */
     .inp-container {
         @apply w-8/12 border-2 border-[#f56a47] rounded-xl flex justify-center items-center relative;
     }
@@ -28,11 +29,11 @@
     }
 
     .inp-container input {
-        @apply focus:outline-[#f56a47] text-[1.85rem] text-[#f56a47];
+        @apply focus:outline-[#f56a47] text-[1.85rem] text-[#f56a47] font-semibold;
     }
 
     .inp-container label {
-        @apply text-[2rem] text-[#f56a47] left-[5rem] transition-all duration-200 bg-[#f0f8ff00] p-0 leading-[0.8];
+        @apply text-3xl text-[#f56a47] left-[5rem] transition-all duration-200 bg-[#f0f8ff00] p-0 leading-[0.8];
         cursor: text;
     }
 
@@ -40,17 +41,19 @@
         @apply translate-y-[-180%] bg-[#f0f8ff] text-[1.5rem] font-semibold;
     }
 
+
+    /* --------------PRODUCTS CONTAINER AND PRODUCT CARDS STYLING--------------- */
     .product-container {
         @apply w-full flex flex-col items-center gap-8;
     }
 
     .product-card {
-        @apply w-[60rem] min-h-[15rem] flex bg-white rounded-lg;
+        @apply max-w-[70rem] min-h-[15rem] flex bg-white rounded-lg;
         box-shadow: 0px 0.7rem 3.2rem rgba(0, 0, 0, 0.25);
     }
     
     .product-card .img {
-        @apply flex-[1] border-r-[1px] border-black;
+        @apply flex-[1] border-r-[1px] border-black grid place-items-center;
     }
 
     .product-card .info {
@@ -70,14 +73,90 @@
     }
 
     .product-card .info button {
-        @apply text-3xl text-white py-2 px-6 bg-rose-400 rounded-md transition-all duration-200 hover:scale-110
+        @apply text-3xl text-white mt-[2rem] py-2 px-6 bg-rose-400 rounded-md transition-all duration-200 hover:scale-110
         hover:shadow-[0px_0.25rem_1.5rem_rgba(0,0,0,0.5)];
     }
 
+    @media(max-width: 640px) {
+        /* -------------------INPUT CONTAINER ELEMENTS RESPONSIVENESS------------------- */
+        .inp-container svg {
+            @apply w-[2rem];
+        }
+
+        .inp-container input {
+            @apply px-4 py-2.5 pl-16 text-[1.5rem];
+        }
+
+        .inp-container label {
+            @apply left-[4rem];
+        }
+
+        .inp-container input:focus ~ label, .inp-container input:not(:placeholder-shown) ~ label {
+            @apply translate-y-[-160%] text-[1.25rem];
+        }
+
+        /* --------------PRODUCTS CONTAINER ELEMENTS RESPONSIVENESS--------------- */
+        .product-card {
+            @apply h-fit;
+        }
+
+        .product-card .info {
+            @apply justify-center;
+        }
+
+        .product-card .info h1, .product-card .info button {
+            @apply text-[1.5rem];
+        }
+    
+        .product-card .info p {
+            @apply text-lg leading-6;
+        }
+    }
+
+    @media(max-width: 563px) {
+        /* -------------------INPUT CONTAINER ELEMENTS RESPONSIVENESS------------------- */
+        .inp-container svg {
+            @apply w-[1.5rem];
+        }
+
+        .inp-container input {
+            @apply px-2.5 py-2 pl-14;
+        }
+
+        .inp-container label {
+            @apply left-[3.5rem];
+        }
+
+        .inp-container input:focus ~ label, .inp-container input:not(:placeholder-shown) ~ label {
+            @apply translate-y-[-150%] text-[1.15rem];
+        }
+
+        /* --------------PRODUCTS CONTAINER ELEMENTS RESPONSIVENESS--------------- */
+        .product-card .info h1 {
+            @apply leading-7;
+        }
+
+        .product-card .info button {
+            @apply mt-2;
+        }
+    
+    }
 }
 
 @layer utilities {
     .card-sizing-padding {
         @apply px-12 py-8 w-full min-h-full;
+    }
+
+    @media(max-width: 768px) {
+        .card-sizing-padding {
+            @apply px-8 py-4;
+        }
+    }
+
+    @media(max-width: 563px) {
+        .card-sizing-padding {
+            @apply px-5;
+        }
     }
 }
