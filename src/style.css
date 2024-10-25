@@ -141,6 +141,36 @@
         }
     
     }
+
+    @media(max-width: 460px) {
+        .product-card {
+            @apply max-w-[30rem] flex-col items-center;
+        }
+
+        .product-card .img {
+            @apply border-none flex-none;
+        }
+
+        .product-card .img img {
+            @apply max-w-40;
+        }
+
+        .product-card .info {
+            @apply gap-[0.75rem] text-center;
+        }
+
+        .product-card .info h1 {
+            @apply text-[1.75rem] leading-8;
+        }
+    
+        .product-card .info p {
+            @apply text-xl;
+        }
+
+        .product-card .info button {
+            @apply text-[1.75rem] self-center;
+        }
+    }
 }
 
 @layer utilities {
