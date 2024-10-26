@@ -5,27 +5,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const productContainer = document.querySelector(".product-container");
 
     //👇 Function to Create Product-Card Element (containing Image, Title, Description and Price of Product):
-    const createProductCardEl = (proImg, proTitle, proDesc, proPrice) => {
+    const createProductCardEl = (product) => {
         const productCardEl = document.createElement("div");
         productCardEl.classList.add("product-card");
         productCardEl.innerHTML = `<div class="img">
-                                    <img src=${proImg} alt="Product Image">
+                                    <img src=${product.image} alt="Product Image" loading="lazy">
                                 </div>
 
                                 <div class="info">
-                                    <h1>${proTitle}</h1>
-                                    <p>${proDesc}</p>
-                                    <button>$ ${proPrice}</button>
+                                    <h1>${product.title}</h1>
+                                    <p>${product.description}</p>
+                                    <button>$ ${product.price}</button>
                                 </div>`;
         return productCardEl;
-
     }
 
     //👇 Function to Display Product-Card Element, by Appending it in the ".product-container":
     const displayProducts = (products) => {
         //Loop through the Fetched Products:
         products.forEach((product) => {
-            const productCardEl = createProductCardEl(product.image, product.title, product.description, product.price);
+            const productCardEl = createProductCardEl(product);
             productContainer.appendChild(productCardEl);
         });
     }
