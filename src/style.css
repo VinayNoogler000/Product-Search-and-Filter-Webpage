@@ -73,7 +73,7 @@
     }
 
     .product-card .info button {
-        @apply text-3xl text-white mt-[2rem] py-2 px-6 bg-rose-400 rounded-md transition-all duration-200 hover:scale-110
+        @apply text-3xl text-white mt-[2rem] py-2 px-6 self-end bg-rose-400 rounded-md transition-all duration-200 hover:scale-110
         hover:shadow-[0px_0.25rem_1.5rem_rgba(0,0,0,0.5)];
     }
 
