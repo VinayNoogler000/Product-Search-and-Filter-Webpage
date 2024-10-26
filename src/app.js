@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const url = "https://fakestoreapi.com/products"; //REST API's Endpoint
+    const fetchedProducts = []; //stores the Products, initially Fetched from the API.
 
     //Select HTML DOM Elements:
-    const productContainer = document.querySelector(".product-container");
+    const searchInpEl = document.querySelector("#search");
+    const productContainerEl = document.querySelector(".product-container");
 
     // 👇 Function to Show Limited No. of Words of a Text Content:
     const decreaseWordsOf = (textContent, numOfVisibleWords) => {
@@ -27,10 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //👇 Function to Display Product-Card Element, by Appending it in the ".product-container":
     const displayProducts = (products) => {
+        //Ensure the Product-Container is Empty:
+        productContainerEl.innerHTML = "";
+
         //Loop through the Fetched Products:
         products.forEach((product) => {
             const productCardEl = createProductCardEl(product);
-            productContainer.appendChild(productCardEl);
+            productContainerEl.appendChild(productCardEl);
         });
     }
 
@@ -45,8 +50,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    fetchProducts()
-        .then((products) => {
-            displayProducts(products);
-        })
+    //👇 Function to Check the text contains a "string value" or not:
+    const checkTextContains = (targetText, searchVal) => {
+        return targetText.toLowerCase().includes(searchVal.toLowerCase());
+    }
+
+    // 👇Function to Search & Filter Products to Display on the Webpage:
+    const searchFilterProducts = (event) => {
+        let searchVal = event.target.value.trim();
+
+        if(searchVal === '') { //then, Display All the Products, when Nothing Searched by the User
+            displayProducts(fetchedProducts);
+        }
+        else { //then, Display Only Those Products, which Contains the "searchVal"
+            productContainerEl.innerHTML = ""; //Ensure the <Product-Container> is Empty.
+            
+            // Loop the "fetchedProducts" to Search and Filter the "searchVal": 
+            fetchedProducts.forEach( (product) => {
+                if( checkTextContains(product.title, searchVal) || checkTextContains(product.description, searchVal) || checkTextContains(product.price.toString(), searchVal)) {
+                    const productCardEl = createProductCardEl(product);
+                    productContainerEl.appendChild(productCardEl);
+                }
+            });
+        }
+    }
+
+    fetchProducts().then((products) => {
+        fetchedProducts.push(...products);
+        displayProducts(fetchedProducts);
+    });
+
+    searchInpEl.addEventListener("input", searchFilterProducts);
 });
