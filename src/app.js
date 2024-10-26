@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //Select HTML DOM Elements:
     const productContainer = document.querySelector(".product-container");
 
+    // 👇 Function to Show Limited No. of Words of a Text Content:
+    const decreaseWordsOf = (textContent, numOfVisibleWords) => {
+        return textContent.split(' ').slice(0, numOfVisibleWords).join(' ') + "...";
+    }
+
     //👇 Function to Create Product-Card Element (containing Image, Title, Description and Price of Product):
     const createProductCardEl = (product) => {
         const productCardEl = document.createElement("div");
@@ -14,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                 <div class="info">
                                     <h1>${product.title}</h1>
-                                    <p>${product.description}</p>
+                                    <p>${decreaseWordsOf(product.description, 20)}</p>
                                     <button>$ ${product.price}</button>
                                 </div>`;
         return productCardEl;
