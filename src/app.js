@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return targetText.toLowerCase().includes(searchVal.toLowerCase());
     }
 
-    // 👇Function to Search & Filter Products to Display on the Webpage:
+    // 👇Function to Search, Filter & Display the Products on the Webpage:
     const searchFilterProducts = (event) => {
         let searchVal = event.target.value.trim();
 
