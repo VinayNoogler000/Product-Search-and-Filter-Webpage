@@ -43,17 +43,17 @@ Check out the live demo: [Product Search & Filter Webpage](https://fetch-search-
    cd Fetch-Product-Search-and-Filter-Webpage
    ```
 
-3. Install dependencies:
+3. Install `tailwindcss` via npm:
    ```bash
-   npm install
+   npm install -D tailwindcss
    ```
 
-4. Start the development server:
+4. Start the Tailwind's build process to Build the CSS file:
    ```bash
-   npm run dev
+   npx tailwindcss -i src/style.css -o dist/output_v1.css --watch
    ```
 
-5. Open `http://localhost:3000` in your browser
+5. Open `index.html` in your preferred browser & see the project working live.
 
 ## 💡 Implementation Details
 
