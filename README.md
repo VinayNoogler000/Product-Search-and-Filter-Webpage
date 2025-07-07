@@ -22,7 +22,7 @@ A responsive and user-friendly product search interface that fetches product dat
 
 ## 🚀 Live Demo
 
-Check out the live demo: [Product Search & Filter Webpage](https://fetch-search-filter-products-webpage-by-vinay-tambey.b-cdn.net/)
+Check out the live demo: [Product Search & Filter Webpage](https://product-search-and-filter-webpage.vercel.app/)
 
 
 ## 📸 Screenshots
